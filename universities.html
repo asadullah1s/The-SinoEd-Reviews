@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner Universities - The SinoEd Reviews</title>
+    <link rel="icon" sizes="180x180" href="images/favi-icon.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Reuse existing styles from your code */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --primary-red: #D32F2F;
+            --light-red: #EF5350;
+            --dark-red: #B71C1C;
+            --white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --dark-gray: #333333;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            left: 40px;
+            background-color: #25d366;
+            color: var(--white);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.5);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.7);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        .whatsapp-text {
+            position: fixed;
+            left: 40px;
+            bottom: 105px;
+            background-color: var(--white);
+            color: var(--dark-gray);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+            white-space: nowrap;
+        }
+        
+        .whatsapp-float:hover + .whatsapp-text {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            max-width: 100%;
+            height: 70px;
+        }
+        
+        .logo-text {
+            color: var(--dark-gray);
+            font-size: 22px;
+            font-weight: 500;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo-para {
+            color: var(--dark-gray);
+            font-size: 14px;
+            font-weight: 200;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            transition: var(--transition);
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: var(--transition);
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-red);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark-gray);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary-red);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-red);
+        }
+        
+        /* Universities Page Specific Styles */
+        .universities-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/universities.jpg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 150px 0;
+        }
+        
+        .universities-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .universities-hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .search-filter {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+        
+        .search-box {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+        
+        .search-box button {
+            padding: 12px 20px;
+            background-color: var(--primary-red);
+            color: var(--white);
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .filter-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .flags-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .flag {
+            width: 80px;
+            height: 60px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .flag.active {
+            border-color: var(--primary-red);
+            transform: scale(1.1);
+        }
+        
+        .flag img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .universities-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .university-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .university-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .university-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .university-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .university-card:hover .university-image img {
+            transform: scale(1.1);
+        }
+        
+        .university-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .university-info {
+            padding: 20px;
+        }
+        
+        .university-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+        
+        .university-location {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .university-location i {
+            margin-right: 8px;
+            color: var(--primary-red);
+        }
+        
+        .university-programs {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .university-features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .university-feature {
+            display: flex;
+            align-items: center;
+        }
+        
+        .university-feature i {
+            margin-right: 5px;
+            color: var(--primary-red);
+        }
+        
+        .university-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .university-btn {
+            flex: 1;
+            padding: 8px 15px;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+         .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-red);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: var(--transition);
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-red);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-red);
+            color: var(--white);
+        }
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--dark-red);
+        }
+        
+        .btn-outline {
+            border: 1px solid var(--primary-red);
+            color: var(--primary-red);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-red);
+            color: var(--white);
+        }
+        
+        /* University Detail View */
+        .university-detail {
+            display: none;
+            padding: 40px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+        
+        .university-detail.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .detail-header {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .detail-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            max-height: 300px;
+        }
+        
+        .detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .detail-info {
+            flex: 1;
+        }
+        
+        .detail-info h2 {
+            color: var(--primary-red);
+            margin-bottom: 15px;
+        }
+        
+        .detail-info p {
+            margin-bottom: 10px;
+        }
+        
+        .detail-badges {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .detail-badge {
+            background-color: var(--light-gray);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .detail-content {
+            margin-top: 30px;
+        }
+        
+        .detail-content h3 {
+            color: var(--dark-red);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--light-gray);
+        }
+        
+        .programs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .programs-table th, .programs-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .programs-table th {
+            background-color: var(--light-gray);
+            font-weight: 600;
+        }
+        
+        .programs-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .fees-table th, .fees-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .fees-table th {
+            background-color: var(--light-gray);
+            font-weight: 600;
+        }
+        
+        .fees-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .back-button {
+            margin-top: 30px;
+            display: inline-block;
+            cursor: pointer;
+            color: var(--primary-red);
+            font-weight: 500;
+        }
+        
+        .back-button:hover {
+            text-decoration: underline;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .pagination-btn {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: var(--white);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .pagination-btn.active {
+            background-color: var(--primary-red);
+            color: var(--white);
+            border-color: var(--primary-red);
+        }
+        
+        .pagination-btn:hover:not(.active) {
+            background-color: var(--light-gray);
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-red);
+            color: var(--white);
+        }
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-red);
+        }
+        
+        .footer-column p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary-red);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+        
+        /* Table Responsiveness */
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .detail-header {
+                flex-direction: column;
+            }
+            
+            .detail-image {
+                max-height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 0;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                gap: 25px;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin-left: 0;
+            }
+            
+            .nav-links a {
+                font-size: 18px;
+                padding: 10px;
+            }
+            
+            .hamburger {
+                display: block;
+                z-index: 101;
+            }
+            
+            .universities-hero h1 {
+                font-size: 36px;
+            }
+            
+            .universities-hero p {
+                font-size: 16px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-box input {
+                border-radius: 4px;
+                margin-bottom: 10px;
+            }
+            
+            .search-box button {
+                border-radius: 4px;
+            }
+            
+            .filter-options {
+                flex-direction: column;
+            }
+            
+            .university-detail {
+                padding: 20px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                left: 20px;
+                font-size: 24px;
+            }
+            
+            .whatsapp-text {
+                left: 20px;
+                bottom: 75px;
+                font-size: 12px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .logo img {
+                height: 50px;
+            }
+            
+            .logo-text {
+                font-size: 18px;
+            }
+            
+            .logo-para {
+                font-size: 12px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .universities-hero {
+                padding: 100px 0;
+            }
+            
+            .universities-hero h1 {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                margin-bottom: 40px;
+            }
+            
+            .section-title h2 {
+                font-size: 24px;
+            }
+            
+            .flags-container {
+                gap: 10px;
+            }
+            
+            .flag {
+                width: 70px;
+                height: 50px;
+            }
+            
+            .universities-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                left: 15px;
+                font-size: 20px;
+            }
+            
+            .whatsapp-text {
+                left: 15px;
+                bottom: 65px;
+                font-size: 11px;
+                padding: 6px 10px;
+            }
+            
+            /* Responsive tables */
+            .table-container {
+                font-size: 14px;
+            }
+            
+            .programs-table th, 
+            .programs-table td,
+            .fees-table th,
+            .fees-table td {
+                padding: 8px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/923209093025" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <div class="whatsapp-text">Message CEO on WhatsApp</div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <div class="logo">
+                        <img src="images/logo.png" alt="The SinoEd Reviews Logo">
+                        <div class="logo-text">The SinoEd Reviews <br>
+                        <div class="logo-para">Navigating Education with Precision</div></div>
+                    </div>
+                </a>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="universities.html" class="active">Universities</a></li>
+                    <li><a href="index.html#team">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Universities Hero Section -->
+    <section class="universities-hero">
+        <div class="container">
+            <h1>Partner Universities</h1>
+            <p>Discover our network of prestigious universities across the globe offering world-class education and scholarship opportunities</p>
+        </div>
+    </section>
+
+    <!-- Universities Section -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore Our University Partners</h2>
+                <p>Filter by country, program, or use the search to find your perfect university</p>
+            </div>
+            
+            <div class="search-filter">
+                <div class="search-box">
+                    <input type="text" placeholder="Search universities or programs..." id="searchInput">
+                    <button id="searchButton"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="countryFilter">Filter by Country</label>
+                        <select id="countryFilter">
+                            <option value="all">All Countries</option>
+                            <option value="china">China</option>
+                            <option value="georgia">Georgia</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="hungary">Hungary</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="programFilter">Filter by Program</label>
+                        <select id="programFilter">
+                            <option value="all">All Programs</option>
+                            <option value="medicine">Medicine</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="business">Business</option>
+                            <option value="computer-science">Computer Science</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="scholarshipFilter">Scholarship Availability</label>
+                        <select id="scholarshipFilter">
+                            <option value="all">All Options</option>
+                            <option value="yes">Scholarship Available</option>
+                            <option value="no">No Scholarship</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flags-container">
+                
+                <div class="flag active" data-country="china">
+                    <img src="https://flagcdn.com/w320/cn.png" alt="China Flag">
+                </div>
+                <div class="flag" data-country="georgia">
+                    <img src="https://flagcdn.com/w320/ge.png" alt="Georgia Flag">
+                </div>
+                <div class="flag" data-country="uk">
+                    <img src="https://flagcdn.com/w320/gb.png" alt="UK Flag">
+                </div>
+                <div class="flag" data-country="hungary">
+                    <img src="https://flagcdn.com/w320/hu.png" alt="Hungary Flag">
+                </div>
+            </div>
+            
+            <div class="universities-list" id="universitiesList">
+                <!-- China Universities -->
+                <div class="university-card" data-country="china" data-programs="medicine,engineering,business" data-scholarship="yes">
+                    <div class="university-image">
+                        <img src="images/uni.jpg" alt="Hebei North University">
+                        <div class="university-badge">Scholarship Available after 1st Year</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Hebei North University</h3>
+                        <div class="university-location">
+                            <i class="fas fa-map-marker-alt"></i> Zhangjiakou, China
+                        </div>
+                        <div class="university-programs">
+                            MBBS, Medicine, Dentistry, Nursing, Business, Computer Science
+                        </div>
+                        <div class="university-features">
+                            <div class="university-feature">
+                                <i class="fas fa-graduation-cap"></i> 5 Years
+                            </div>
+                            <div class="university-feature">
+                                <i class="fas fa-money-bill-wave"></i> ¥23,100/year
+                            </div>
+                        </div>
+                        <div class="university-actions">
+                            <a href="#" class="university-btn btn-primary" data-id="1">View Details</a>
+                            <a href="contact.html" class="university-btn btn-outline">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="university-card" data-country="china" data-programs="medicine,business,computer-science" data-scholarship="yes">
+                    <div class="university-image">
+                        <img src="images/cheifeng.jpeg" alt="Chifeng University">
+                        <div class="university-badge">Scholarship Available after 1st Year</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Chifeng University</h3>
+                        <div class="university-location">
+                            <i class="fas fa-map-marker-alt"></i> Chifeng, China
+                        </div>
+                        <div class="university-programs">
+                            Medicine, Business, Computer Science, Humanities
+                        </div>
+                        <div class="university-features">
+                            <div class="university-feature">
+                                <i class="fas fa-graduation-cap"></i> 4-6 Years
+                            </div>
+                            <div class="university-feature">
+                                <i class="fas fa-money-bill-wave"></i> ¥22,700/year
+                            </div>
+                        </div>
+                        <div class="university-actions">
+                            <a href="#" class="university-btn btn-primary" data-id="2">View Details</a>
+                            <a href="contact.html" class="university-btn btn-outline">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- <div class="university-card" data-country="china" data-programs="engineering,computer-science,medicine" data-scholarship="yes">
+                    <div class="university-image">
+                        <img src="https://images.unsplash.com/photo-1551524160-755a4f12ae74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Tsinghua University">
+                        <div class="university-badge">Scholarship Available</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Tsinghua University</h3>
+                        <div class="university-location">
+                            <i class="fas fa-map-marker-alt"></i> Beijing, China
+                        </div>
+                        <div class="university-programs">
+                            Engineering, Computer Science, Medicine, Architecture, Economics
+                        </div>
+                        <div class="university-features">
+                            <div class="university-feature">
+                                <i class="fas fa-graduation-cap"></i> 4-5 Years
+                            </div>
+                            <div class="university-feature">
+                                <i class="fas fa-money-bill-wave"></i> $3,800-$5,200/year
+                            </div>
+                        </div>
+                        <div class="university-actions">
+                            <a href="#" class="university-btn btn-primary" data-id="3">View Details</a>
+                            <a href="contact.html" class="university-btn btn-outline">Apply Now</a>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <!-- Georgia Universities 
+                <div class="university-card" data-country="georgia" data-programs="medicine,international-relations" data-scholarship="yes">
+                    <div class="university-image">
+                        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Tbilisi State University">
+                        <div class="university-badge">Scholarship Available</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>Tbilisi State University</h3>
+                        <div class="university-location">
+                            <i class="fas fa-map-marker-alt"></i> Tbilisi, Georgia
+                        </div>
+                        <div class="university-programs">
+                            Medicine, International Relations, Business, Law
+                        </div>
+                        <div class="university-features">
+                            <div class="university-feature">
+                                <i class="fas fa-graduation-cap"></i> 4-6 Years
+                            </div>
+                            <div class="university-feature">
+                                <i class="fas fa-money-bill-wave"></i> $4,500/year
+                            </div>
+                        </div>
+                        <div class="university-actions">
+                            <a href="#" class="university-btn btn-primary" data-id="4">View Details</a>
+                            <a href="contact.html" class="university-btn btn-outline">Apply Now</a>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <!-- UK Universities
+                <div class="university-card" data-country="uk" data-programs="medicine,engineering,business,law" data-scholarship="no">
+                    <div class="university-image">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="University of Oxford">
+                    </div>
+                    <div class="university-info">
+                        <h3>University of Oxford</h3>
+                        <div class="university-location">
+                            <i class="fas fa-map-marker-alt"></i> Oxford, UK
+                        </div>
+                        <div class="university-programs">
+                            All Disciplines, Medicine, Law, Business, Engineering
+                        </div>
+                        <div class="university-features">
+                            <div class="university-feature">
+                                <i class="fas fa-graduation-cap"></i> 3-6 Years
+                            </div>
+                            <div class="university-feature">
+                                <i class="fas fa-money-bill-wave"></i> £27,000/year
+                            </div>
+                        </div>
+                        <div class="university-actions">
+                            <a href="#" class="university-btn btn-primary" data-id="5">View Details</a>
+                            <a href="contact.html" class="university-btn btn-outline">Apply Now</a>
+                        </div>
+                    </div>
+                </div>  -->
+                
+                <!-- Hungary Universities
+                <div class="university-card" data-country="hungary" data-programs="medicine,dentistry,pharmacy" data-scholarship="yes">
+                    <div class="university-image">
+                        <img src="https://images.unsplash.com/photo-1535982337059-51a5b2d3c079?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="University of Debrecen">
+                        <div class="university-badge">Scholarship Available</div>
+                    </div>
+                    <div class="university-info">
+                        <h3>University of Debrecen</h3>
+                        <div class="university-location">
+                            <i class="fas fa-map-marker-alt"></i> Debrecen, Hungary
+                        </div>
+                        <div class="university-programs">
+                            Medicine, Dentistry, Pharmacy, Engineering, Business
+                        </div>
+                        <div class="university-features">
+                            <div class="university-feature">
+                                <i class="fas fa-graduation-cap"></i> 5-6 Years
+                            </div>
+                            <div class="university-feature">
+                                <i class="fas fa-money-bill-wave"></i> $7,500/year
+                            </div>
+                        </div>
+                        <div class="university-actions">
+                            <a href="#" class="university-btn btn-primary" data-id="6">View Details</a>
+                            <a href="contact.html" class="university-btn btn-outline">Apply Now</a>
+                        </div>
+                    </div>
+                </div>  -->
+            </div>
+            
+            <div class="pagination">
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">Next</button>
+            </div>
+            
+            <!-- University Detail View -->
+            <div class="university-detail" id="universityDetail">
+                <!-- Detail content will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>The SinoEd Reviews</h3>
+                    <p>Your trusted partner for international education opportunities. We specialize in helping students achieve their dreams of studying abroad with expert guidance and personalized support.</p>
+                    <div class="social-links">
+                        <a href="https://web.facebook.com/21studyinchina" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/thesinoedreviews?igsh=MXQ3NXk0bjE1MzZudA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="universities.html">Universities</a></li>
+                        <li><a href="index.html#team">Our Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Office Address: Education Hub, Beijing, China</p>
+                    <p><i class="fas fa-phone"></i> Phone: +86 123 456 7890</p>
+                    <p><i class="fas fa-envelope"></i> Email: info@sinoedreviews.com</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates on universities, scholarships, and educational opportunities.</p>
+                    <form>
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 The SinoEd Reviews. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // University filtering functionality
+        const flags = document.querySelectorAll('.flag');
+        const countryFilter = document.getElementById('countryFilter');
+        const programFilter = document.getElementById('programFilter');
+        const scholarshipFilter = document.getElementById('scholarshipFilter');
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const universityCards = document.querySelectorAll('.university-card');
+        const universityDetail = document.getElementById('universityDetail');
+        
+        // Filter by country flags
+        flags.forEach(flag => {
+            flag.addEventListener('click', () => {
+                const country = flag.getAttribute('data-country');
+                
+                // Update active flag
+                flags.forEach(f => f.classList.remove('active'));
+                flag.classList.add('active');
+                
+                // Update country filter dropdown
+                countryFilter.value = country;
+                
+                // Filter universities
+                filterUniversities();
+            });
+        });
+        
+        // Filter by dropdowns
+        countryFilter.addEventListener('change', filterUniversities);
+        programFilter.addEventListener('change', filterUniversities);
+        scholarshipFilter.addEventListener('change', filterUniversities);
+        
+        // Search functionality
+        searchButton.addEventListener('click', filterUniversities);
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                filterUniversities();
+            }
+        });
+        
+        // Filter universities based on selected criteria
+        function filterUniversities() {
+            const countryValue = countryFilter.value;
+            const programValue = programFilter.value;
+            const scholarshipValue = scholarshipFilter.value;
+            const searchValue = searchInput.value.toLowerCase();
+            
+            universityCards.forEach(card => {
+                const country = card.getAttribute('data-country');
+                const programs = card.getAttribute('data-programs');
+                const scholarship = card.getAttribute('data-scholarship');
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const location = card.querySelector('.university-location').textContent.toLowerCase();
+                const programList = card.querySelector('.university-programs').textContent.toLowerCase();
+                
+                const countryMatch = countryValue === 'all' || country === countryValue;
+                const programMatch = programValue === 'all' || programs.includes(programValue);
+                const scholarshipMatch = scholarshipValue === 'all' || scholarship === scholarshipValue;
+                const searchMatch = searchValue === '' || 
+                                  title.includes(searchValue) || 
+                                  location.includes(searchValue) ||
+                                  programList.includes(searchValue);
+                
+                if (countryMatch && programMatch && scholarshipMatch && searchMatch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // University data
+        const universitiesData = {
+            1: {
+                name: "Hebei North University",
+                image: "images/uni.jpg",
+                location: "Zhangjiakou, China",
+                programs: "MBBS, Medicine, Dentistry, Nursing, Business, Computer Science",
+                ranking: "Top Medical University in Northern China",
+                fees: "Approx. ¥23,100 RMB per year after first year",
+                scholarship: "¥8,000 RMB scholarship available for MBBS students each year",
+                about: "Hebei North University is a dynamic institution built on a tradition of academic excellence and innovation. Our campus combines modern facilities with a diverse and inclusive community, where students from across the world come together to learn, grow, and achieve their goals. At HBNU, we are dedicated to preparing future leaders through strong academics, supportive mentorship, and opportunities that extend beyond the classroom.",
+                requirements: "High school diploma, Chinese/English proficiency test scores, Entrance examination. All international students are required to complete a 1-year Chinese language foundation program prior to beginning their main degree courses.",
+                facilities: "Advanced laboratories, modern library with digital resources, state-of-the-art classrooms, comfortable dormitories, recreational centers, sports complexes, and student lounges.",
+                programsList: `
+                    <table class="programs-table">
+                        <tr>
+                            <th>Undergraduate Programs</th>
+                            <th>Duration</th>
+                        </tr>
+                        <tr>
+                            <td>Clinical Medicine (MBBS)</td>
+                            <td>5 years</td>
+                        </tr>
+                        <tr>
+                            <td>Dentistry</td>
+                            <td>5 years</td>
+                        </tr>
+                        <tr>
+                            <td>Nursing</td>
+                            <td>4 years</td>
+                        </tr>
+                        <tr>
+                            <td>Business Administration</td>
+                            <td>4 years</td>
+                        </tr>
+                        <tr>
+                            <td>Computer Science</td>
+                            <td>4 years</td>
+                        </tr>
+                        <tr>
+                            <td>Pharmacy</td>
+                            <td>4 years</td>
+                        </tr>
+                        <tr>
+                            <td>Civil Engineering</td>
+                            <td>4 years</td>
+                        </tr>
+                    </table>
+                    <table class="programs-table">
+                        <tr>
+                            <th>Postgraduate Programs</th>
+                            <th>Duration</th>
+                        </tr>
+                        <tr>
+                            <td>Master of Public Health (MPH)</td>
+                            <td>3 years</td>
+                        </tr>
+                        <tr>
+                            <td>Master of Business Administration (MBA)</td>
+                            <td>2 years</td>
+                        </tr>
+                        <tr>
+                            <td>Master of Computer Science</td>
+                            <td>2 years</td>
+                        </tr>
+                        <tr>
+                            <td>Master of Engineering</td>
+                            <td>3 years</td>
+                        </tr>
+                        <tr>
+                            <td>Master of Nursing</td>
+                            <td>2 years</td>
+                        </tr>
+                    </table>
+                `,
+                feesTable: `
+                    <table class="fees-table">
+                        <tr>
+                            <th>Fee Details</th>
+                            <th>1st Year (RMB)</th>
+                            <th>2nd Year (RMB)</th>
+                            <th>3rd Year (RMB)</th>
+                            <th>4th Year (RMB)</th>
+                            <th>5th Year (RMB)</th>
+                            <th>6th Year (RMB)</th>
+                        </tr>
+                        <tr>
+                            <td>Tuition Fee</td>
+                            <td>10,000</td>
+                            <td>10,000</td>
+                            <td>10,000</td>
+                            <td>10,000</td>
+                            <td>10,000</td>
+                            <td>10,000</td>
+                        </tr>
+                        <tr>
+                            <td>Medical Insurance</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                        </tr>
+                        <tr>
+                            <td>Accommodation</td>
+                            <td>3,500</td>
+                            <td>3,500</td>
+                            <td>3,500</td>
+                            <td>3,500</td>
+                            <td>3,500</td>
+                            <td>3,500</td>
+                        </tr>
+                        <tr>
+                            <td>Registration & Admission Fee</td>
+                            <td>29,900</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Visa & Residential Permit</td>
+                            <td>-</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Fees</strong></td>
+                            <td><strong>45,000</strong></td>
+                            <td><strong>23,100</strong></td>
+                            <td><strong>23,100</strong></td>
+                            <td><strong>23,100</strong></td>
+                            <td><strong>23,100</strong></td>
+                            <td><strong>23,100</strong></td>
+                        </tr>
+                    </table>
+                `,
+                prospectus: "images/HBNU PROSPECTUS.pdf"
+            },
+            2: {
+                name: "Chifeng University",
+                image: "images/cheifeng.jpeg",
+                location: "Chifeng, China",
+                programs: "Medicine, Business, Computer Science, Humanities",
+                ranking: "Leading University in Inner Mongolia",
+                fees: "Approx. ¥22,700 RMB per year after first year",
+                scholarship: "Scholarships available for outstanding students",
+                about: "Chifeng University is a public university formed by the combination of Chifeng Normal College of Nationalities and other four academies. It was approved by the Ministry of Education of China in 2003. Located in the city of Chifeng, the birthplace of the Hongshan cultures, the university has 24 colleges or departments. The medical college has 1793 undergraduate and junior college students with 139 full-time teachers including those with master's and doctoral degrees.",
+                requirements: "High school diploma, Language proficiency, Academic transcripts, Physical Examination Form, Non-Criminal Certificate, Passport copy, and 2-inch photo with white background.",
+                facilities: "Modern teaching and research facilities including experiment center, computer center, multimedia classrooms, aural-oral labs and computer network. Medical laboratory building with 49 laboratories. Separate dorms for boys and girls with attached bathroom, bed, furniture, free hot drinking water, heater, internet access, and public laundry.",
+                programsList: `
+                    <p>Chifeng University offers a wide range of programs across multiple disciplines including:</p>
+                    <ul>
+                        <li>Medicine and Health Sciences</li>
+                        <li>Business Administration</li>
+                        <li>Computer Science and Technology</li>
+                        <li>Engineering</li>
+                        <li>Education</li>
+                        <li>Arts and Humanities</li>
+                        <li>Social Sciences</li>
+                    </ul>
+                `,
+                feesTable: `
+                    <table class="fees-table">
+                        <tr>
+                            <th>Fee Details</th>
+                            <th>2nd Year (RMB)</th>
+                            <th>3rd Year (RMB)</th>
+                            <th>4th Year (RMB)</th>
+                            <th>5th Year (RMB)</th>
+                            <th>6th Year (RMB)</th>
+                        </tr>
+                        <tr>
+                            <td>Tuition Fee</td>
+                            <td>18,000</td>
+                            <td>18,000</td>
+                            <td>18,000</td>
+                            <td>18,000</td>
+                            <td>18,000</td>
+                        </tr>
+                        <tr>
+                            <td>Hostel Fee</td>
+                            <td>2,500</td>
+                            <td>2,500</td>
+                            <td>2,500</td>
+                            <td>2,500</td>
+                            <td>2,500</td>
+                        </tr>
+                        <tr>
+                            <td>Residence Permit</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                        </tr>
+                        <tr>
+                            <td>Medical Checkup Fee</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                            <td>800</td>
+                        </tr>
+                        <tr>
+                            <td>Insurance Fee</td>
+                            <td>600</td>
+                            <td>600</td>
+                            <td>600</td>
+                            <td>600</td>
+                            <td>600</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Fees</strong></td>
+                            <td><strong>22,700</strong></td>
+                            <td><strong>22,700</strong></td>
+                            <td><strong>22,700</strong></td>
+                            <td><strong>22,700</td>
+                            <td><strong>22,700</strong></td>
+                        </tr>
+                    </table>
+                    <p><strong>First year full payment: 40,000 RMB (including all charges except bedding and books)</strong></p>
+                `,
+                prospectus: "images/Welcome To Chifeng University.pdf"
+            },
+            // Add data for other universities similarly
+            3: {
+                name: "Tsinghua University",
+                image: "https://images.unsplash.com/photo-1551524160-755a4f12ae74?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80",
+                location: "Beijing, China",
+                programs: "Engineering, Computer Science, Medicine, Architecture, Economics",
+                ranking: "#15 in QS World University Rankings",
+                fees: "$3,800 - $5,200 per year",
+                scholarship: "Multiple scholarship options available",
+                about: "Tsinghua University is a public research university in Beijing and a member of the C9 League. It is renowned for its engineering and computer science programs.",
+                requirements: "High school diploma, Language proficiency, Standardized test scores, Recommendation letters",
+                facilities: "World-class facilities with advanced laboratories, extensive library resources, and modern campus infrastructure.",
+                programsList: `<p>Detailed program information available on request</p>`,
+                feesTable: `<p>Detailed fee structure available on request</p>`,
+                prospectus: "#"
+            }
+        };
+        
+        // Show university detail
+        document.querySelectorAll('.university-btn.btn-primary').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const universityId = btn.getAttribute('data-id');
+                const university = universitiesData[universityId];
+                
+                if (university) {
+                    universityDetail.innerHTML = `
+                        <div class="detail-header">
+                            <div class="detail-image">
+                                <img src="${university.image}" alt="${university.name}">
+                            </div>
+                            <div class="detail-info">
+                                <h2>${university.name}</h2>
+                                <p><i class="fas fa-map-marker-alt"></i> ${university.location}</p>
+                                <p><strong>Programs:</strong> ${university.programs}</p>
+                                <p><strong>World Ranking:</strong> ${university.ranking}</p>
+                                <p><strong>Tuition Fees:</strong> ${university.fees}</p>
+                                <p><strong>Scholarship Availability:</strong> ${university.scholarship}</p>
+                                <div class="detail-badges">
+                                    <span class="detail-badge">Scholarship Available</span>
+                                    <span class="detail-badge">International Students</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail-content">
+                            <h3>About the University</h3>
+                            <p>${university.about}</p>
+                            
+                            <h3>Programs Offered</h3>
+                            <div class="table-container">${university.programsList}</div>
+                            
+                            <h3>Fee Structure</h3>
+                            <div class="table-container">${university.feesTable}</div>
+                            
+                            <h3>Facilities</h3>
+                            <p>${university.facilities}</p>
+                            
+                            <h3>Admission Requirements</h3>
+                            <p>${university.requirements}</p>
+                        </div>
+                        <div class="action-buttons">
+                            <a href="${university.prospectus}" class="btn" download><i class="fas fa-download"></i> Download Prospectus</a>
+                            <a href="contact.html" class="btn btn-outline"><i class="fas fa-user-graduate"></i> Apply Now</a>
+                            <div class="btn btn-outline back-button" id="backToList">
+                                <i class="fas fa-arrow-left"></i> Back to Universities List
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Hide list and show detail
+                    document.getElementById('universitiesList').style.display = 'none';
+                    document.querySelector('.flags-container').style.display = 'none';
+                    document.querySelector('.search-filter').style.display = 'none';
+                    document.querySelector('.section-title').style.display = 'none';
+                    document.querySelector('.pagination').style.display = 'none';
+                    universityDetail.classList.add('active');
+                    
+                    // Scroll to detail section
+                    universityDetail.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Back to list button
+                    document.getElementById('backToList').addEventListener('click', () => {
+                        universityDetail.classList.remove('active');
+                        document.getElementById('universitiesList').style.display = 'grid';
+                        document.querySelector('.flags-container').style.display = 'flex';
+                        document.querySelector('.search-filter').style.display = 'block';
+                        document.querySelector('.section-title').style.display = 'block';
+                        document.querySelector('.pagination').style.display = 'flex';
+                        
+                        // Scroll back to universities section
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                }
+            });
+        });
+        
+        // Pagination functionality
+        document.querySelectorAll('.pagination-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.pagination-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // In a real implementation, this would load the next page of results
+            });
+        });
+    </script>
+</body>
+</html>
