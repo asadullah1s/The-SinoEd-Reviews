@@ -437,6 +437,30 @@
             max-width: 700px;
             margin: 0 auto 30px;
         }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-red);
+            color: var(--white);
+        }
         
         /* Footer */
         footer {
@@ -945,4 +969,5 @@
         });
     </script>
 </body>
+
 </html>
